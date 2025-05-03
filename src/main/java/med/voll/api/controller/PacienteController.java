@@ -2,7 +2,6 @@ package med.voll.api.controller;
 
 import java.net.URI;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -50,10 +49,9 @@ public class PacienteController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<DadosListagemPaciente> atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados) throws BadRequestException {
+    public ResponseEntity<DadosListagemPaciente> atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados) {
 
-        Paciente paciente = repository.findById(dados.id())
-                .orElseThrow(() -> new BadRequestException("Nenhum paciente com o Id: " + dados.id() + " encontrado."));
+        Paciente paciente = repository.findById(dados.id()).get();
 
         paciente.atualizarInformacoes(dados);
 
@@ -62,10 +60,9 @@ public class PacienteController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> excluir(@PathVariable Long id) throws BadRequestException {
+    public ResponseEntity<?> excluir(@PathVariable Long id) {
 
-        Paciente paciente = repository.findById(id)
-                .orElseThrow(() -> new BadRequestException("Nenhum paciente com o Id: " + id + " encontrado."));
+        Paciente paciente = repository.findById(id).get();
 
         paciente.excluir();
 
@@ -74,10 +71,9 @@ public class PacienteController {
 
     @GetMapping("/{id}")
     @Transactional
-    public ResponseEntity<DadosListagemPaciente> detalhar(@PathVariable Long id) throws BadRequestException {
+    public ResponseEntity<DadosListagemPaciente> detalhar(@PathVariable Long id) {
 
-        Paciente paciente = repository.findById(id)
-                .orElseThrow(() -> new BadRequestException("Nenhum paciente com o Id: " + id + " encontrado."));
+        Paciente paciente = repository.findById(id).get();
 
 
                 return ResponseEntity.ok(new DadosListagemPaciente(paciente));

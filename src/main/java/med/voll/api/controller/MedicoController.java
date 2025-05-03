@@ -1,6 +1,5 @@
 package med.voll.api.controller;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -51,11 +50,9 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<DadosDetalhamentoMedico> atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados)
-            throws BadRequestException {
+    public ResponseEntity<DadosDetalhamentoMedico> atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados){
 
-        Medico medico = medicoRepository.findById(dados.id())
-                .orElseThrow(() -> new BadRequestException("Nenhum médico com o Id: " + dados.id() + " encontrado."));
+        Medico medico = medicoRepository.findById(dados.id()).get();
 
         medico.atualizarInformacoes(dados);
 
@@ -64,10 +61,9 @@ public class MedicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<?> excluir(@PathVariable Long id) throws BadRequestException {
+    public ResponseEntity<?> excluir(@PathVariable Long id) {
 
-        Medico medico = medicoRepository.findById(id)
-            .orElseThrow(() -> new BadRequestException("Nenhum médico com o Id: " + id + " encontrado."));
+        Medico medico = medicoRepository.findById(id).get();
 
 
         medico.excluir();
@@ -76,10 +72,9 @@ public class MedicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DadosDetalhamentoMedico> detalhar(@PathVariable Long id) throws BadRequestException {
+    public ResponseEntity<DadosDetalhamentoMedico> detalhar(@PathVariable Long id) {
 
-        Medico medico = medicoRepository.findById(id)
-            .orElseThrow(() -> new BadRequestException("Nenhum médico com o Id: " + id + " encontrado."));
+        Medico medico = medicoRepository.findById(id).get();
 
 
         return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
