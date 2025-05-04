@@ -1,4 +1,4 @@
-package med.voll.api.entity;
+package med.voll.api.domain.endereco;
 
 import java.util.Optional;
 
@@ -6,7 +6,6 @@ import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.dto.common.DadosEndereco;
 
 @Embeddable
 @Getter

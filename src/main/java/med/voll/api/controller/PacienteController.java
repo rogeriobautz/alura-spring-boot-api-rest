@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.validation.Valid;
-import med.voll.api.dto.paciente.DadosAtualizacaoPaciente;
-import med.voll.api.dto.paciente.DadosCadastroPaciente;
-import med.voll.api.dto.paciente.DadosDetalhamentoPaciente;
-import med.voll.api.dto.paciente.DadosListagemPaciente;
-import med.voll.api.entity.Paciente;
+import med.voll.api.domain.paciente.DadosAtualizacaoPaciente;
+import med.voll.api.domain.paciente.DadosCadastroPaciente;
+import med.voll.api.domain.paciente.DadosDetalhamentoPaciente;
+import med.voll.api.domain.paciente.DadosListagemPaciente;
+import med.voll.api.domain.paciente.Paciente;
 import med.voll.api.repository.PacienteRepository;
 
 @RestController

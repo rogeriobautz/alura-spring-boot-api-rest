@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import med.voll.api.dto.usuario.DadosUsuario;
+import med.voll.api.domain.usuario.DadosAutenticacao;
 
 @RestController
 @RequestMapping("/login")
@@ -20,7 +20,7 @@ public class AutenticacaoController {
     private AuthenticationManager authManager;
 
     @PostMapping
-    public ResponseEntity<?> login(@RequestBody @Valid DadosUsuario dados) {
+    public ResponseEntity<?> login(@RequestBody @Valid DadosAutenticacao dados) {
         var token = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         System.out.println("token: " + token);
         var auth = authManager.authenticate(token);

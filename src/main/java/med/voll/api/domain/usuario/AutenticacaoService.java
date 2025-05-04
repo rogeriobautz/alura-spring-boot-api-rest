@@ -1,6 +1,5 @@
-package med.voll.api.service;
+package med.voll.api.domain.usuario;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 import med.voll.api.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService implements UserDetailsService{
+public class AutenticacaoService implements UserDetailsService{
 
     @Autowired
     private UsuarioRepository usuarioRepository;

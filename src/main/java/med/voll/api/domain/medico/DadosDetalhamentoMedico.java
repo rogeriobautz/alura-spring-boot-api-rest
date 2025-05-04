@@ -1,8 +1,6 @@
-package med.voll.api.dto.medico;
+package med.voll.api.domain.medico;
 
-import med.voll.api.entity.Endereco;
-import med.voll.api.entity.Medico;
-import med.voll.api.enums.Especialidade;
+import med.voll.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoMedico(Long id,
         String nome,
