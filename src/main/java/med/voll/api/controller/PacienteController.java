@@ -3,6 +3,9 @@ package med.voll.api.controller;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -35,6 +38,7 @@ public class PacienteController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "pacientes", key = "'listar-pacientes'")
     public ResponseEntity<DadosDetalhamentoPaciente> cadastrar(@RequestBody @Valid DadosCadastroPaciente dados, UriComponentsBuilder uriBuilder) {
         Paciente paciente = repository.save(new Paciente(dados));
         URI uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
@@ -42,6 +46,8 @@ public class PacienteController {
     }
 
     @GetMapping
+    @Transactional
+    @Cacheable(value = "pacientes", key = "'listar-pacientes'")
     public ResponseEntity<Page<DadosListagemPaciente>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         Page<DadosListagemPaciente> page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
         return ResponseEntity.ok(page);
@@ -49,6 +55,10 @@ public class PacienteController {
 
     @PutMapping
     @Transactional
+    @Caching(evict = {
+        @CacheEvict(value = "pacientes", key = "'listar-pacientes'"),
+        @CacheEvict(value = "pacientes", key = "#dados.id")
+    })
     public ResponseEntity<DadosListagemPaciente> atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados) {
 
         Paciente paciente = repository.findById(dados.id()).get();
@@ -60,6 +70,10 @@ public class PacienteController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @Caching(evict = {
+        @CacheEvict(value = "pacientes", key = "'listar-pacientes'"),
+        @CacheEvict(value = "pacientes", key = "#id")
+    })
     public ResponseEntity<?> excluir(@PathVariable Long id) {
 
         Paciente paciente = repository.findById(id).get();
@@ -71,12 +85,12 @@ public class PacienteController {
 
     @GetMapping("/{id}")
     @Transactional
+    @Cacheable(value = "pacientes", key = "#id")
     public ResponseEntity<DadosListagemPaciente> detalhar(@PathVariable Long id) {
 
         Paciente paciente = repository.findById(id).get();
 
-
-                return ResponseEntity.ok(new DadosListagemPaciente(paciente));
+        return ResponseEntity.ok(new DadosListagemPaciente(paciente));
     }
 
 
