@@ -26,6 +26,4 @@ public class AutenticacaoController {
         return ResponseEntity.ok(autenticacaoService.gerarTokenJWT(dados));
     }
 
-
-
 }

@@ -1,0 +1,415 @@
+type: collection.insomnia.rest/5.0
+name: API Voll.med
+meta:
+  id: wrk_9ef21ccf2b254578820840c3dfadbafe
+  created: 1746137744149
+  modified: 1746137744149
+collection:
+  - name: Médicos
+    meta:
+      id: fld_337b772f2ba845f5b24b259e48872098
+      created: 1746304261841
+      modified: 1746304261841
+      sortKey: -1746304261841
+    children:
+      - url: "{{ _.url }}/medicos"
+        name: Cadastrar Médico
+        meta:
+          id: req_d435377fbece457fb2d92d1f7f94fa77
+          created: 1746137785504
+          modified: 1746418951806
+          isPrivate: false
+          sortKey: -1746304277461
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Tadeu Melo",
+            	"email": "tadeu.melo@voll.com",
+            	"telefone": "61999775434",
+            	"crm": "666660",
+            	"especialidade": "ORTOPEDIA",
+            	"endereco": {
+            		"logradouro": "rua 1",
+            		"bairro": "bairro",
+            		"cep": "12345678",
+            		"cidade": "Brasilia",
+            		"uf": "DF",
+            		"numero": "1"
+            	}
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/medicos"
+        name: Listar Médicos
+        meta:
+          id: req_db7c40c3329c41a6a579e7e87578dca7
+          created: 1746146484402
+          modified: 1746417330391
+          isPrivate: false
+          sortKey: -1746304277361
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/medicos/22"
+        name: Excluir Médico
+        meta:
+          id: req_7c42f65652ac464db7d5fc2e571ee8f2
+          created: 1746148988952
+          modified: 1746417392758
+          isPrivate: false
+          sortKey: -1746304277373.5
+        method: DELETE
+        parameters:
+          - id: pair_23723977283142adbdb587293471952b
+            name: crm
+            value: "123456"
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/medicos"
+        name: Atualizar Médico
+        meta:
+          id: req_8287b2f140dc491a8216d71e452a2755
+          created: 1746152879848
+          modified: 1746417401084
+          isPrivate: false
+          sortKey: -1746304277411
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": 22,
+            	"nome": "Adriano Lucas"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/medicos/{% response 'body',
+          'req_db7c40c3329c41a6a579e7e87578dca7',
+          'b64::JC5jb250ZW50WyhALmxlbmd0aC0xKV0uaWQ=::46b', 'always', 60 %}"
+        name: Detalhar Médico
+        meta:
+          id: req_b19b788460aa43a88160bcaa20d34949
+          created: 1746300685155
+          modified: 1746418862966
+          isPrivate: false
+          sortKey: -1746304277261
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Pacientes
+    meta:
+      id: fld_3765ff860c3847a989e7df2bc26694be
+      created: 1746304268986
+      modified: 1746415873948
+      sortKey: -1746304268986
+    children:
+      - url: "{{ _.url }}/pacientes"
+        name: Cadastrar Paciente
+        meta:
+          id: req_9c7efaf5fbd54582880b9e74d220d00b
+          created: 1746303514677
+          modified: 1746418821588
+          isPrivate: false
+          sortKey: -1746304294807
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Debora Santos",
+            	"email": "debora.santos@voll.com",
+            	"telefone": "61999775234",
+            	"cpf": "123.456.789-00",
+            	"endereco": {
+            		"logradouro": "rua 1",
+            		"bairro": "bairro",
+            		"cep": "12345678",
+            		"cidade": "Brasilia",
+            		"uf": "DF",
+            		"numero": "1"
+            	}
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/pacientes"
+        name: Listar Pacientes
+        meta:
+          id: req_cd0e64ba2c254c538c42c45571187833
+          created: 1746303896372
+          modified: 1746417466092
+          isPrivate: false
+          sortKey: -1746304294632
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/pacientes"
+        name: Atualizar Paciente
+        meta:
+          id: req_f866a3b43395475e955529369b7f6875
+          created: 1746303936456
+          modified: 1746417486656
+          isPrivate: false
+          sortKey: -1746304294707
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": 6,
+            	"telefone": "61999999999"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/pacientes/{% response 'body',
+          'req_cd0e64ba2c254c538c42c45571187833',
+          'b64::JC5jb250ZW50WyhALmxlbmd0aC0xKV0uaWQ=::46b', 'always', 60 %}"
+        name: Detalhar Paciente
+        meta:
+          id: req_ca4d724e79844ea7a77f4d2a1b102290
+          created: 1746304003441
+          modified: 1746418786618
+          isPrivate: false
+          sortKey: -1746304294619.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+            id: pair_b8d59f61f5c5424bb7a7bf5f344869f3
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/pacientes/6"
+        name: Excluir Paciente
+        meta:
+          id: req_89e92f78b6b04d9db5e880c2c2b5c017
+          created: 1746304181982
+          modified: 1746417483535
+          isPrivate: false
+          sortKey: -1746304294657
+        method: DELETE
+        parameters:
+          - id: pair_23723977283142adbdb587293471952b
+            name: crm
+            value: "123456"
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
+            _.token_request_interval %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Login
+    meta:
+      id: fld_a584476023974889b28a3c022d0aa8b8
+      created: 1746373099733
+      modified: 1746417508087
+      sortKey: -1746373099733
+    children:
+      - url: "{{ _.url }}/login"
+        name: Login
+        meta:
+          id: req_56f194628c904b9ba0f41b296f54faaf
+          created: 1746373117599
+          modified: 1746414878942
+          isPrivate: false
+          sortKey: -1746373217247
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"login": "teste",
+            	"senha": "teste"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        scripts:
+          afterResponse: |-
+            insomnia.baseEnvironment.set(
+            	"token_string", insomnia.response.json().access_token);
+            insomnia.baseEnvironment.set(
+            	"token_expiration", insomnia.response.json().expires_at);
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_c1a4842beef08947e07aea496a135fce66a1bd0e
+    created: 1746137744154
+    modified: 1746417508083
+  cookies:
+    - id: be0052d2-afc7-4fb5-8678-5850dd8721c3
+      key: JSESSIONID
+      value: 93002AED73521932AFB276C0E00F95DA
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: true
+      creation: 2025-05-04T14:08:52.230Z
+      hostOnly: true
+      lastAccessed: 2025-05-04T14:52:27.474Z
+environments:
+  name: Base Environment
+  meta:
+    id: env_c1a4842beef08947e07aea496a135fce66a1bd0e
+    created: 1746137744152
+    modified: 1746417869841
+    isPrivate: false
+  data:
+    token_string: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgVm9sbC5tZWQiLCJzdWIiOiJ0ZXN0ZSIsImV4cCI6MTc0NjQyNDcwN30.DPcSomvDJ4qaSlOeYpng3XzgXSuOfQk2NyB0zKA4rHs
+    token_expiration: 2025-05-05T02:58:27.238869411-03:00
+    url: http://localhost:8080
+    token_request_interval: "10"

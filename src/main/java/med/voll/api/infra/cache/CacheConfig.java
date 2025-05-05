@@ -44,7 +44,7 @@ public class CacheConfig {
 
         cacheManager.setCaffeine(caffeine);
 
-        var loginCache = Caffeine.newBuilder().expireAfterWrite(defaultCacheExpiration, TimeUnit.SECONDS).build();
+        var loginCache = Caffeine.newBuilder().expireAfterWrite(loginCacheExpiration, TimeUnit.SECONDS).build();
 
         cacheManager.registerCustomCache("login", loginCache);
 
