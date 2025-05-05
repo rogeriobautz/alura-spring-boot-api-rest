@@ -1,4 +1,4 @@
-package med.voll.api.config;
+package med.voll.api.infra.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

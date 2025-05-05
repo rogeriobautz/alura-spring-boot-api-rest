@@ -1,4 +1,4 @@
-package med.voll.api.infra.exception;
+package med.voll.api.infra.common;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.NoSuchElementException;

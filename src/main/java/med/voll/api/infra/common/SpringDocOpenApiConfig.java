@@ -1,4 +1,4 @@
-package med.voll.api.config;
+package med.voll.api.infra.common;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;

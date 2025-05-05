@@ -1,26 +1,27 @@
 package med.voll.api.domain.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import med.voll.api.repository.UsuarioRepository;
+import med.voll.api.infra.security.DadosTokenJWT;
+import med.voll.api.infra.security.TokenService;
 
 @Service
-public class AutenticacaoService implements UserDetailsService{
+public class AutenticacaoService{
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private AuthenticationManager authManager;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var userdetails =  usuarioRepository.findByLogin(username);
-        if(userdetails == null){
-            throw new UsernameNotFoundException("Dados inválidos");
-        }
-        return userdetails;
+    @Autowired
+    private TokenService tokenService;
+
+    public DadosTokenJWT gerarTokenJWT(DadosUsuario dados) {        
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
+        Authentication authentication = authManager.authenticate(authToken);
+        return tokenService.gerarTokenHMAC256((Usuario) authentication.getPrincipal());
     }
 
 }

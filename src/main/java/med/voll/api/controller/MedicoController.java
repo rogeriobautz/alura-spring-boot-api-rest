@@ -1,6 +1,9 @@
 package med.voll.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -33,6 +36,7 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "medicos", key = "'listar-medicos'")
     public ResponseEntity<DadosDetalhamentoMedico> cadastrar(@RequestBody @Valid DadosCadastroMedico dados,
             UriComponentsBuilder uriBuilder) {
         var medico = medicoRepository.save(new Medico(dados));
@@ -42,6 +46,7 @@ public class MedicoController {
 
     @GetMapping()
     @Transactional
+    @Cacheable(value = "medicos", key = "'listar-medicos'")
     public ResponseEntity<Page<DadosListagemMedico>> listar(
             @PageableDefault(size = 10, sort = { "nome", "especialidade" }) Pageable paginacao) {
         var page = medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
@@ -50,6 +55,10 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
+    @Caching(evict = {
+        @CacheEvict(value = "medicos", key = "'listar-medicos'"),
+        @CacheEvict(value = "medicos", key = "#dados.id")
+    })
     public ResponseEntity<DadosDetalhamentoMedico> atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados){
 
         Medico medico = medicoRepository.findById(dados.id()).get();
@@ -61,10 +70,13 @@ public class MedicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @Caching(evict = {
+        @CacheEvict(value = "medicos", key = "'listar-medicos'"),
+        @CacheEvict(value = "medicos", key = "#id")
+    })
     public ResponseEntity<?> excluir(@PathVariable Long id) {
 
         Medico medico = medicoRepository.findById(id).get();
-
 
         medico.excluir();
 
@@ -72,10 +84,11 @@ public class MedicoController {
     }
 
     @GetMapping("/{id}")
+    @Transactional
+    @Cacheable(value = "medicos", key = "#id")
     public ResponseEntity<DadosDetalhamentoMedico> detalhar(@PathVariable Long id) {
 
         Medico medico = medicoRepository.findById(id).get();
-
 
         return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
     }
