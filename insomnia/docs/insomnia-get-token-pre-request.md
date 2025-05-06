@@ -1,6 +1,8 @@
+# Pre-request script para pegar token jwt
+- Usa-se um fetch e variáveis de ambiente para pegar o access_token
+- No geral é mais fácil usar a tag no Header configurando o outro request na collection
+- Mas deste modo é mais completo e evita chamadas desnecessárias e diminui erros de unauthorized
 
-# Teste pre-request script para pegar token jwt
-<!-- Substituido por tag no Header - muito mais fácil -->
 ```javascript
     const tokenUrl = insomnia.baseEnvironment.get('url') + '/login';
 
