@@ -13,7 +13,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 
 import med.voll.api.domain.usuario.Usuario;
 
@@ -26,23 +25,23 @@ public class TokenService {
     @Value("${api.security.offset:-03:00}")
     private String offset;
 
-    public DadosTokenJWT gerarTokenHMAC256(Usuario usuario) {
+    private static final String ISSUER = "API Voll.med";
+
+
+    public DadosTokenJWT gerarTokenJWT(Usuario usuario) {
+
 
         try {
-            
+
             Algorithm algoritmo = Algorithm.HMAC256(tokenSecret);
 
             Instant expiracao = dataExpiracao();
 
             String tokenJWT =  JWT.create()
-                    .withIssuer("API Voll.med")
+                    .withIssuer(ISSUER)
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
-
-            // UTC timezone
-            // String dataExpiracaoFormatada = ZonedDateTime.ofInstant(expiracao, ZoneId.of("UTC"))
-            //         .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
             String dataExpiracaoFormatada = ZonedDateTime.ofInstant(expiracao, ZoneId.of(offset)).toString();
             
@@ -58,17 +57,21 @@ public class TokenService {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of(offset));
     }
 
-    public void validarToken(String token) {
-        DecodedJWT decodedJWT;
+    public String getSubject(String tokenJWT) {
         try {
-            Algorithm algoritmo = Algorithm.HMAC256("secret");
-            var verifier = JWT.require(algoritmo)
-                    .withIssuer("auth0")
-                    .build();
 
-            decodedJWT = verifier.verify(token);
+            Algorithm algoritmo = Algorithm.HMAC256(tokenSecret);
+
+            return JWT.require(algoritmo)
+                    .withIssuer(ISSUER)
+                    .build()
+                    .verify(tokenJWT)
+                    .getSubject();
+
         } catch (JWTVerificationException exception) {
-            // Invalid signature/claims
+
+            throw new RuntimeException("Token inválido ou expirado", exception);
+
         }
     }
 
