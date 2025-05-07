@@ -25,9 +25,9 @@ public class TokenController {
     @Autowired
     private UsuarioRepository usuarioRepository;
     
-    @Cacheable(value = "login", key = "#dados.login")
+    @Cacheable(value = "token", key = "#dados.login")
     @PostMapping("/token")
-    public ResponseEntity<DadosTokenJWT> login(@RequestBody @Valid DadosLoginUsuario dados) {
+    public ResponseEntity<DadosTokenJWT> generateToken(@RequestBody @Valid DadosLoginUsuario dados) {
         var usuario = (Usuario) usuarioRepository.findByLogin(dados.login());
         if(usuario != null && !usuario.getAtivo()) {
             throw new RuntimeException("Usuário inativo");

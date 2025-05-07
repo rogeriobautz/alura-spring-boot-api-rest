@@ -22,8 +22,8 @@ public class CacheConfig {
     @Value("${spring.cache.caffeine.expiration:900}")
     private Integer defaultCacheExpiration;
 
-    @Value("${spring.cache.caffeine.login.expiration:900}")
-    private Integer loginCacheExpiration;
+    @Value("${spring.cache.caffeine.token.expiration:900}")
+    private Integer tokenCacheExpiration;
 
     private static final Logger logger = LoggerFactory.getLogger(CacheConfig.class);
 
@@ -44,9 +44,9 @@ public class CacheConfig {
 
         cacheManager.setCaffeine(caffeine);
 
-        var loginCache = Caffeine.newBuilder().expireAfterWrite(loginCacheExpiration, TimeUnit.SECONDS).build();
+        var tokenCache = Caffeine.newBuilder().expireAfterWrite(tokenCacheExpiration, TimeUnit.SECONDS).build();
 
-        cacheManager.registerCustomCache("login", loginCache);
+        cacheManager.registerCustomCache("token", tokenCache);
 
         return cacheManager;
     }

@@ -5,7 +5,7 @@
     "description": "Time in seconds for expiration of caches unnamed(default)"
   },
   {
-    "name": "spring.cache.caffeine.login.expiration",
+    "name": "spring.cache.caffeine.token.expiration",
     "type": "java.lang.String",
     "description": "Time in seconds for expiration of cache named login that returns a token jwt"
   },

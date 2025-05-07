@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  backend:
+    # image: cursos-alura/vollmed-api # for using jar package
+    build: . # for using maven
+    container_name: vollmed-api
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/vollmed_api
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      JWT_SECRET: dev
+      SPRING_CACHE_CAFFEINE_TOKEN-EXPIRATION: '20'
+
