@@ -4,7 +4,7 @@
 - Mas deste modo é mais completo e evita chamadas desnecessárias e diminui erros de unauthorized
 
 ```javascript
-    const tokenUrl = insomnia.baseEnvironment.get('url') + '/login';
+    const tokenUrl = insomnia.baseEnvironment.get('url') + '/token';
 
     const requestBody = {
     "login": "teste",

@@ -25,11 +25,9 @@ public class TokenService {
     @Value("${api.security.offset:-03:00}")
     private String offset;
 
-    private static final String ISSUER = "API Voll.med";
-
+    private static final String ISSUER = "API Voll.med"; 
 
     public DadosTokenJWT gerarTokenJWT(Usuario usuario) {
-
 
         try {
 

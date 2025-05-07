@@ -17,7 +17,7 @@ collection:
         meta:
           id: req_d435377fbece457fb2d92d1f7f94fa77
           created: 1746137785504
-          modified: 1746418951806
+          modified: 1746586584412
           isPrivate: false
           sortKey: -1746304277461
         method: POST
@@ -47,8 +47,8 @@ collection:
         authentication:
           type: bearer
           token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -62,7 +62,7 @@ collection:
         meta:
           id: req_db7c40c3329c41a6a579e7e87578dca7
           created: 1746146484402
-          modified: 1746417330391
+          modified: 1746586596028
           isPrivate: false
           sortKey: -1746304277361
         method: GET
@@ -71,9 +71,9 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -87,7 +87,7 @@ collection:
         meta:
           id: req_7c42f65652ac464db7d5fc2e571ee8f2
           created: 1746148988952
-          modified: 1746417392758
+          modified: 1746586590379
           isPrivate: false
           sortKey: -1746304277373.5
         method: DELETE
@@ -102,8 +102,8 @@ collection:
         authentication:
           type: bearer
           token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -117,7 +117,7 @@ collection:
         meta:
           id: req_8287b2f140dc491a8216d71e452a2755
           created: 1746152879848
-          modified: 1746417401084
+          modified: 1746586587256
           isPrivate: false
           sortKey: -1746304277411
         method: PUT
@@ -136,8 +136,8 @@ collection:
         authentication:
           type: bearer
           token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -153,7 +153,7 @@ collection:
         meta:
           id: req_b19b788460aa43a88160bcaa20d34949
           created: 1746300685155
-          modified: 1746418862966
+          modified: 1746586601464
           isPrivate: false
           sortKey: -1746304277261
         method: GET
@@ -162,9 +162,9 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -185,7 +185,7 @@ collection:
         meta:
           id: req_9c7efaf5fbd54582880b9e74d220d00b
           created: 1746303514677
-          modified: 1746418821588
+          modified: 1746586567580
           isPrivate: false
           sortKey: -1746304294807
         method: POST
@@ -193,10 +193,10 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome": "Debora Santos",
-            	"email": "debora.santos@voll.com",
+            	"nome": "Jéssica Ribeiro",
+            	"email": "jessica2000@voll.com",
             	"telefone": "61999775234",
-            	"cpf": "123.456.789-00",
+            	"cpf": "123.456.780-12",
             	"endereco": {
             		"logradouro": "rua 1",
             		"bairro": "bairro",
@@ -214,8 +214,8 @@ collection:
         authentication:
           type: bearer
           token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -229,7 +229,7 @@ collection:
         meta:
           id: req_cd0e64ba2c254c538c42c45571187833
           created: 1746303896372
-          modified: 1746417466092
+          modified: 1746586576087
           isPrivate: false
           sortKey: -1746304294632
         method: GET
@@ -238,9 +238,9 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -254,7 +254,7 @@ collection:
         meta:
           id: req_f866a3b43395475e955529369b7f6875
           created: 1746303936456
-          modified: 1746417486656
+          modified: 1746586570278
           isPrivate: false
           sortKey: -1746304294707
         method: PUT
@@ -273,8 +273,8 @@ collection:
         authentication:
           type: bearer
           token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -290,7 +290,7 @@ collection:
         meta:
           id: req_ca4d724e79844ea7a77f4d2a1b102290
           created: 1746304003441
-          modified: 1746418786618
+          modified: 1746586580680
           isPrivate: false
           sortKey: -1746304294619.5
         method: GET
@@ -300,9 +300,9 @@ collection:
             id: pair_b8d59f61f5c5424bb7a7bf5f344869f3
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
           disabled: false
         settings:
           renderRequestBody: true
@@ -317,7 +317,7 @@ collection:
         meta:
           id: req_89e92f78b6b04d9db5e880c2c2b5c017
           created: 1746304181982
-          modified: 1746417483535
+          modified: 1746586573314
           isPrivate: false
           sortKey: -1746304294657
         method: DELETE
@@ -332,8 +332,8 @@ collection:
         authentication:
           type: bearer
           token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
-            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'when-expired',
-            _.token_request_interval %}"
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -346,17 +346,87 @@ collection:
     meta:
       id: fld_a584476023974889b28a3c022d0aa8b8
       created: 1746373099733
-      modified: 1746417508087
-      sortKey: -1746373099733
+      modified: 1746585545057
+      sortKey: -1746584140365
     children:
-      - url: "{{ _.url }}/login"
-        name: Login
+      - url: "{{ _.url }}/token"
+        name: "Autenticacao | login: admin"
         meta:
           id: req_56f194628c904b9ba0f41b296f54faaf
           created: 1746373117599
-          modified: 1746414878942
+          modified: 1746584490904
           isPrivate: false
           sortKey: -1746373217247
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"login": "admin",
+            	"senha": "admin"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        scripts:
+          afterResponse: |-
+            //insomnia.baseEnvironment.set(
+            //	"token_string", insomnia.response.json().access_token);
+            //insomnia.baseEnvironment.set(
+            //	"token_expiration", insomnia.response.json().expires_at);
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/token"
+        name: "Autenticacao | login: user"
+        meta:
+          id: req_fb7b21f9fbfa493dad11f561bb7130f4
+          created: 1746584405737
+          modified: 1746584418029
+          isPrivate: false
+          sortKey: -1746338756027
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"login": "user",
+            	"senha": "user"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        scripts:
+          afterResponse: |-
+            //insomnia.baseEnvironment.set(
+            //	"token_string", insomnia.response.json().access_token);
+            //insomnia.baseEnvironment.set(
+            //	"token_expiration", insomnia.response.json().expires_at);
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/token"
+        name: "Autenticacao | login: teste"
+        meta:
+          id: req_15d4cf19d9ac487984abea96ebda904e
+          created: 1746584424039
+          modified: 1746584527029
+          isPrivate: false
+          sortKey: -1746321525417
         method: POST
         body:
           mimeType: application/json
@@ -372,10 +442,135 @@ collection:
             value: insomnia/11.0.2
         scripts:
           afterResponse: |-
-            insomnia.baseEnvironment.set(
-            	"token_string", insomnia.response.json().access_token);
-            insomnia.baseEnvironment.set(
-            	"token_expiration", insomnia.response.json().expires_at);
+            //insomnia.baseEnvironment.set(
+            //	"token_string", insomnia.response.json().access_token);
+            //insomnia.baseEnvironment.set(
+            //	"token_expiration", insomnia.response.json().expires_at);
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Usuarios
+    meta:
+      id: fld_14fd6e0d52de46b2a9f72ebdad0bb4cc
+      created: 1746584140265
+      modified: 1746584140265
+      sortKey: -1746584140265
+    children:
+      - url: "{{ _.url }}/usuarios/cadastrar"
+        name: Cadastrar Usuario
+        meta:
+          id: req_49e3fec05ed4443382024e77b5866247
+          created: 1746584157905
+          modified: 1746585631733
+          isPrivate: false
+          sortKey: -1746585135796
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"login": "teste3",
+            	"senha": "teste3",
+            	"nome": "Teste",
+            	"autorizacao": "USER"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios/6"
+        name: Detalhar Usuário
+        meta:
+          id: req_a9837831f91e49fe9f059ec773bcb4da
+          created: 1746585081068
+          modified: 1746585648810
+          isPrivate: false
+          sortKey: -1746585135696
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+            id: pair_b8d59f61f5c5424bb7a7bf5f344869f3
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios"
+        name: Listar Usuários
+        meta:
+          id: req_9624c7d0c2334ad2978c75aaae3b6acf
+          created: 1746585161879
+          modified: 1746585640321
+          isPrivate: false
+          sortKey: -1746585135746
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/usuarios/6"
+        name: Excluir Usuário
+        meta:
+          id: req_6f74eba30bcb466f98cf12855c56b992
+          created: 1746585360535
+          modified: 1746586107107
+          isPrivate: false
+          sortKey: -1746585135771
+        method: DELETE
+        parameters:
+          - id: pair_23723977283142adbdb587293471952b
+            name: crm
+            value: "123456"
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -389,7 +584,7 @@ cookieJar:
   meta:
     id: jar_c1a4842beef08947e07aea496a135fce66a1bd0e
     created: 1746137744154
-    modified: 1746417508083
+    modified: 1746585545051
   cookies:
     - id: be0052d2-afc7-4fb5-8678-5850dd8721c3
       key: JSESSIONID
@@ -406,10 +601,10 @@ environments:
   meta:
     id: env_c1a4842beef08947e07aea496a135fce66a1bd0e
     created: 1746137744152
-    modified: 1746417869841
+    modified: 1746585545053
     isPrivate: false
   data:
-    token_string: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgVm9sbC5tZWQiLCJzdWIiOiJ0ZXN0ZSIsImV4cCI6MTc0NjQyNDcwN30.DPcSomvDJ4qaSlOeYpng3XzgXSuOfQk2NyB0zKA4rHs
-    token_expiration: 2025-05-05T02:58:27.238869411-03:00
+    token_string: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgVm9sbC5tZWQiLCJzdWIiOiJ0ZXN0ZSIsImV4cCI6MTc0NjU2NDkxN30.9Jw9xKtcCQtJzHnAmtj4L0McrRLNEFtvDBHxfCh86qA
+    token_expiration: 2025-05-06T17:55:17.375897208-03:00
     url: http://localhost:8080
     token_request_interval: "10"

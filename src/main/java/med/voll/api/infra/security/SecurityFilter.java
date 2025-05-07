@@ -16,7 +16,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import med.voll.api.repository.UsuarioRepository;
+import med.voll.api.domain.usuario.UsuarioRepository;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
@@ -53,7 +53,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     // @Override
     // protected boolean shouldNotFilter(@NonNull HttpServletRequest request) {
-    //     return request.getRequestURI().endsWith("/login")
+    //     return request.getRequestURI().endsWith("/token")
     //     || request.getRequestURI().contains("/swagger-ui")
     //     || request.getRequestURI().contains("/v3/api-docs")
     //     || request.getRequestURI().endsWith("/favicon.ico");
@@ -61,7 +61,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(@NonNull HttpServletRequest request) {
-        List<String> excludedPaths = Arrays.asList("/login$", "/swagger-ui/.*", "/v3/api-docs/.*", "/favicon.ico$");
+        List<String> excludedPaths = Arrays.asList("/token$", "/swagger-ui/.*", "/v3/api-docs/.*", "/favicon.ico$");
         String requestURI = request.getRequestURI();
         for (String path : excludedPaths) {
             if (requestURI.matches(path)) {

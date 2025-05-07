@@ -18,7 +18,7 @@ public class AutenticacaoService{
     @Autowired
     private TokenService tokenService;
 
-    public DadosTokenJWT gerarTokenJWT(DadosUsuario dados) {        
+    public DadosTokenJWT gerarTokenJWT(DadosLoginUsuario dados) {        
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         Authentication authentication = authManager.authenticate(authToken);
         return tokenService.gerarTokenJWT((Usuario) authentication.getPrincipal());

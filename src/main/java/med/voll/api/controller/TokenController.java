@@ -10,20 +10,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.AutenticacaoService;
-import med.voll.api.domain.usuario.DadosUsuario;
+import med.voll.api.domain.usuario.DadosLoginUsuario;
+import med.voll.api.domain.usuario.Usuario;
+import med.voll.api.domain.usuario.UsuarioRepository;
 import med.voll.api.infra.security.DadosTokenJWT;
 
 @RestController
-@RequestMapping("/login")
-public class AutenticacaoController {    
+@RequestMapping()
+public class TokenController {    
     
     @Autowired
     private AutenticacaoService autenticacaoService;
     
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    
     @Cacheable(value = "login", key = "#dados.login")
-    @PostMapping
-    public ResponseEntity<DadosTokenJWT> login(@RequestBody @Valid DadosUsuario dados) {
+    @PostMapping("/token")
+    public ResponseEntity<DadosTokenJWT> login(@RequestBody @Valid DadosLoginUsuario dados) {
+        var usuario = (Usuario) usuarioRepository.findByLogin(dados.login());
+        if(usuario != null && !usuario.getAtivo()) {
+            throw new RuntimeException("Usuário inativo");
+        }
         return ResponseEntity.ok(autenticacaoService.gerarTokenJWT(dados));
-    }
+    }    
 
 }
