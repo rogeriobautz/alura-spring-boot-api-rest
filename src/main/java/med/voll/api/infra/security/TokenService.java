@@ -38,7 +38,7 @@ public class TokenService {
             String tokenJWT =  JWT.create()
                     .withIssuer(ISSUER)
                     .withSubject(usuario.getLogin())
-                    .withExpiresAt(dataExpiracao())
+                    .withExpiresAt(expiracao)
                     .sign(algoritmo);
 
             String dataExpiracaoFormatada = ZonedDateTime.ofInstant(expiracao, ZoneId.of(offset)).toString();

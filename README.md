@@ -1,6 +1,6 @@
 # Descrição
 
-- Api desenvolvida com base no curso de spring da alura
+- Api desenvolvida com base nos cursos de spring da alura
 - Extras: cache, swagger, endpoints de usuário.
 
 # Teste local

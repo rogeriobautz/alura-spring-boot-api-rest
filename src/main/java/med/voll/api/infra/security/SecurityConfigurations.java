@@ -37,18 +37,9 @@ public class SecurityConfigurations {
                         AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/swagger-ui/**"),
                         AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/favicon.ico"))
                     .permitAll()
-                    .requestMatchers(
-                        AntPathRequestMatcher.antMatcher(HttpMethod.DELETE),
-                        AntPathRequestMatcher.antMatcher(HttpMethod.PUT),
-                        AntPathRequestMatcher.antMatcher(HttpMethod.POST))
+                    .requestMatchers(AntPathRequestMatcher.antMatcher("/usuarios/**"))
                     .hasRole(EnumPapelAutorizacao.ADMIN.name())
-                    .requestMatchers(
-                        AntPathRequestMatcher.antMatcher(HttpMethod.GET))
-                    .hasAnyRole(
-                            EnumPapelAutorizacao.USER.name(),
-                            EnumPapelAutorizacao.ADMIN.name())
-                    .anyRequest()
-                    .authenticated())
+                    .anyRequest().authenticated())
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
     }

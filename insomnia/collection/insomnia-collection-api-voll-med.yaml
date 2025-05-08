@@ -17,7 +17,7 @@ collection:
         meta:
           id: req_d435377fbece457fb2d92d1f7f94fa77
           created: 1746137785504
-          modified: 1746586584412
+          modified: 1746724942541
           isPrivate: false
           sortKey: -1746304277461
         method: POST
@@ -46,7 +46,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -62,7 +62,7 @@ collection:
         meta:
           id: req_db7c40c3329c41a6a579e7e87578dca7
           created: 1746146484402
-          modified: 1746586596028
+          modified: 1746724958737
           isPrivate: false
           sortKey: -1746304277361
         method: GET
@@ -87,7 +87,7 @@ collection:
         meta:
           id: req_7c42f65652ac464db7d5fc2e571ee8f2
           created: 1746148988952
-          modified: 1746586590379
+          modified: 1746724951694
           isPrivate: false
           sortKey: -1746304277373.5
         method: DELETE
@@ -101,7 +101,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -117,7 +117,7 @@ collection:
         meta:
           id: req_8287b2f140dc491a8216d71e452a2755
           created: 1746152879848
-          modified: 1746586587256
+          modified: 1746724946817
           isPrivate: false
           sortKey: -1746304277411
         method: PUT
@@ -135,7 +135,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -185,7 +185,7 @@ collection:
         meta:
           id: req_9c7efaf5fbd54582880b9e74d220d00b
           created: 1746303514677
-          modified: 1746586567580
+          modified: 1746725145769
           isPrivate: false
           sortKey: -1746304294807
         method: POST
@@ -193,10 +193,10 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome": "Jéssica Ribeiro",
-            	"email": "jessica2000@voll.com",
-            	"telefone": "61999775234",
-            	"cpf": "123.456.780-12",
+            	"nome": "Ana Alves",
+            	"email": "aalves1234@voll.com",
+            	"telefone": "61999712345",
+            	"cpf": "123.456.780-19",
             	"endereco": {
             		"logradouro": "rua 1",
             		"bairro": "bairro",
@@ -213,7 +213,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -254,7 +254,7 @@ collection:
         meta:
           id: req_f866a3b43395475e955529369b7f6875
           created: 1746303936456
-          modified: 1746586570278
+          modified: 1746724892090
           isPrivate: false
           sortKey: -1746304294707
         method: PUT
@@ -272,7 +272,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -317,7 +317,7 @@ collection:
         meta:
           id: req_89e92f78b6b04d9db5e880c2c2b5c017
           created: 1746304181982
-          modified: 1746586573314
+          modified: 1746724936465
           isPrivate: false
           sortKey: -1746304294657
         method: DELETE
@@ -331,7 +331,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -346,8 +346,8 @@ collection:
     meta:
       id: fld_a584476023974889b28a3c022d0aa8b8
       created: 1746373099733
-      modified: 1746585545057
-      sortKey: -1746584140365
+      modified: 1746724993251
+      sortKey: -1746584140765
     children:
       - url: "{{ _.url }}/token"
         name: "Autenticacao | login: admin"
@@ -419,47 +419,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.url }}/token"
-        name: "Autenticacao | login: teste"
-        meta:
-          id: req_15d4cf19d9ac487984abea96ebda904e
-          created: 1746584424039
-          modified: 1746584527029
-          isPrivate: false
-          sortKey: -1746321525417
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-            	"login": "teste",
-            	"senha": "teste"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-          - name: User-Agent
-            value: insomnia/11.0.2
-        scripts:
-          afterResponse: |-
-            //insomnia.baseEnvironment.set(
-            //	"token_string", insomnia.response.json().access_token);
-            //insomnia.baseEnvironment.set(
-            //	"token_expiration", insomnia.response.json().expires_at);
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
   - name: Usuarios
     meta:
       id: fld_14fd6e0d52de46b2a9f72ebdad0bb4cc
       created: 1746584140265
-      modified: 1746584140265
-      sortKey: -1746584140265
+      modified: 1746724990996
+      sortKey: -1746584140665
     children:
       - url: "{{ _.url }}/usuarios/cadastrar"
         name: Cadastrar Usuario
@@ -502,7 +467,7 @@ collection:
         meta:
           id: req_a9837831f91e49fe9f059ec773bcb4da
           created: 1746585081068
-          modified: 1746585648810
+          modified: 1746724867296
           isPrivate: false
           sortKey: -1746585135696
         method: GET
@@ -512,7 +477,7 @@ collection:
             id: pair_b8d59f61f5c5424bb7a7bf5f344869f3
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
           disabled: false
@@ -529,7 +494,7 @@ collection:
         meta:
           id: req_9624c7d0c2334ad2978c75aaae3b6acf
           created: 1746585161879
-          modified: 1746585640321
+          modified: 1746724860333
           isPrivate: false
           sortKey: -1746585135746
         method: GET
@@ -538,7 +503,7 @@ collection:
             value: insomnia/10.3.1
         authentication:
           type: bearer
-          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+          token: "{% response 'body', 'req_56f194628c904b9ba0f41b296f54faaf',
             'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
             %}"
         settings:
@@ -554,7 +519,7 @@ collection:
         meta:
           id: req_6f74eba30bcb466f98cf12855c56b992
           created: 1746585360535
-          modified: 1746586107107
+          modified: 1746724855009
           isPrivate: false
           sortKey: -1746585135771
         method: DELETE
@@ -579,29 +544,164 @@ collection:
             send: true
             store: true
           rebuildPath: true
+  - name: Consultas
+    meta:
+      id: fld_f8ce0ae174b547ecb4500efdca586c0e
+      created: 1746724971582
+      modified: 1746724983687
+      sortKey: -1746584140465
+    children:
+      - url: "{{ _.url }}/consultas"
+        name: Agendar Consulta
+        meta:
+          id: req_0448079e8d974ef7a43266cd6a9d0c9a
+          created: 1746725016456
+          modified: 1746733681068
+          isPrivate: false
+          sortKey: -1746725019394
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "idPaciente": 1,
+            "data": "2025-10-11T10:00",
+            "especialidade":	"ORTOPEDIA"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/consultas/{% response 'body',
+          'req_01dfdb2ef3044fbc957acd609f4d9f7a',
+          'b64::JC5jb250ZW50WyhALmxlbmd0aC0xKV0uaWQ=::46b', 'always', 60 %}"
+        name: Detalhar Consulta
+        meta:
+          id: req_c9694214db514752bd5eb491e37abb46
+          created: 1746731365804
+          modified: 1746732019642
+          isPrivate: false
+          sortKey: -1746725019294
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+            id: pair_b8d59f61f5c5424bb7a7bf5f344869f3
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/consultas"
+        name: Listar Consultas
+        meta:
+          id: req_01dfdb2ef3044fbc957acd609f4d9f7a
+          created: 1746731388267
+          modified: 1746731905717
+          isPrivate: false
+          sortKey: -1746725019344
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.url }}/consultas"
+        name: Excluir Consulta
+        meta:
+          id: req_6b82543b83e84430b8d3221cbfed03d3
+          created: 1746735007361
+          modified: 1746735323352
+          isPrivate: false
+          sortKey: -1746725019369
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"idConsulta": 1,
+            	"motivo": "OUTROS"
+            }
+        parameters:
+          - id: pair_23723977283142adbdb587293471952b
+            name: crm
+            value: "123456"
+            disabled: true
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_fb7b21f9fbfa493dad11f561bb7130f4',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', _.token_request_interval
+            %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_c1a4842beef08947e07aea496a135fce66a1bd0e
     created: 1746137744154
-    modified: 1746585545051
+    modified: 1746724831187
   cookies:
-    - id: be0052d2-afc7-4fb5-8678-5850dd8721c3
+    - id: 44f4b719-2a5e-4900-90f4-648af340647a
       key: JSESSIONID
-      value: 93002AED73521932AFB276C0E00F95DA
+      value: C9904FFE9628C2BE9B7F3A8E1028F620
       domain: localhost
       path: /
       secure: false
       httpOnly: true
       creation: 2025-05-04T14:08:52.230Z
       hostOnly: true
-      lastAccessed: 2025-05-04T14:52:27.474Z
+      lastAccessed: 2025-05-08T02:12:28.870Z
 environments:
   name: Base Environment
   meta:
     id: env_c1a4842beef08947e07aea496a135fce66a1bd0e
     created: 1746137744152
-    modified: 1746585545053
+    modified: 1746724831190
     isPrivate: false
   data:
     token_string: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgVm9sbC5tZWQiLCJzdWIiOiJ0ZXN0ZSIsImV4cCI6MTc0NjU2NDkxN30.9Jw9xKtcCQtJzHnAmtj4L0McrRLNEFtvDBHxfCh86qA
