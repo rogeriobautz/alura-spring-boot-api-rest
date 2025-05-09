@@ -40,7 +40,8 @@ public class Consulta {
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
-    private LocalDateTime data;
+    @Column(name = "data_hora")
+    private LocalDateTime dataHora;
 
     @Column(name = "motivo_cancelamento")
     @Enumerated(EnumType.STRING)

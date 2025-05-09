@@ -1,7 +1,6 @@
 package med.voll.api.domain.medico;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +11,12 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
     Page<Medico> findAllByAtivoTrue(Pageable paginacao);
 
-    List<Medico> findByEspecialidade(Especialidade especialidade);
+    @Query("""
+            select m from Medico m
+            where m.id = :id
+            and m.ativo = true
+            """)
+    Medico findByIdAndAtivoTrue(Long id);
 
     @Query("""
         select m from Medico m
@@ -20,10 +24,10 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
         and m.especialidade = :especialidade
         and m.id not in(
                 select c.medico.id from Consulta c
-                where c.data = :data)
+                where c.dataHora = :dataHora)
         order by rand()
         limit 1
         """)
-    Medico escolherMedicoAleatorioLivreNaData(Especialidade especialidade, LocalDateTime data);
+    Medico escolherMedicoAleatorioLivreNaDataHora(Especialidade especialidade, LocalDateTime dataHora);
 
 }

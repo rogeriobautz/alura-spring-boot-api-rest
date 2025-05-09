@@ -1,11 +1,13 @@
 package med.voll.api.domain.consulta;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import med.voll.api.domain.medico.Medico;
-import med.voll.api.domain.medico.MedicoRepository;
-import med.voll.api.domain.paciente.PacienteRepository;
+import med.voll.api.domain.medico.MedicoService;
+import med.voll.api.domain.paciente.PacienteService;
 
 @Service
 public class ConsultaService {
@@ -14,48 +16,48 @@ public class ConsultaService {
     private ConsultaRepository consultaRepository;
 
     @Autowired
-    private MedicoRepository medicoRepository;
+    private MedicoService medicoService;
 
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private PacienteService pacienteService;
 
     public Consulta agendar(DadosAgendamentoConsulta dados) {
 
-        var paciente = pacienteRepository.findById(dados.idPaciente())
-                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado"));
+        validarDataConsulta(dados.dataHora());
 
-        var medico = escolherMedico(dados);
+        var paciente = pacienteService.getPaciente(dados);
 
-        var consulta = new Consulta(null, medico, paciente, dados.data(), null);
+        var medico = medicoService.getMedico(dados);
+
+        var consulta = new Consulta(null, medico, paciente, dados.dataHora(), null);
 
         return consultaRepository.save(consulta);
-    }
-
-    private Medico escolherMedico(DadosAgendamentoConsulta dados) {
-        if (dados.idMedico() != null) {
-            return medicoRepository.findById(dados.idMedico())
-                    .orElseThrow(() -> new IllegalArgumentException(
-                            "Médico com a id " + dados.idMedico() + "não encontrado"));
-        }
-
-        if (dados.especialidade() == null) {
-            throw new IllegalArgumentException("Não é possível escolher um médico sem especialidade");
-        }
-
-        var medico = medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data());
-        if (medico == null) {
-            throw new IllegalArgumentException("Não há médicos disponíveis nessa data");
-        }
-        return medico;
     }
 
     public void cancelar(DadosCancelamentoConsulta dados) {
         if (!consultaRepository.existsById(dados.idConsulta())) {
             throw new IllegalArgumentException("Id da consulta informado não existe!");
         }
-    
+
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
         consulta.cancelar(dados.motivo());
+    }
+
+    private void validarDataConsulta(LocalDateTime dataHora) {
+
+        if (dataHora.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            throw new IllegalArgumentException("Não é possível agendar consultas aos domingos");
+        }
+        if (dataHora.getHour() < 7 || dataHora.getHour() > 18) {
+            throw new IllegalArgumentException("Horário inválido. O horário de agendamento deve ser entre 7h e 18h");
+        }
+        if (dataHora.getMinute() != 0 || dataHora.getSecond() != 0) {
+            throw new IllegalArgumentException("Horário inválido. O agendamento deve ser feito em horários cheios");
+        }
+        if (LocalDateTime.now().isAfter(dataHora.minusMinutes(30))) {
+            throw new IllegalArgumentException(
+                    "Não é possível agendar consultas com menos de 30 minutos de antecedência");
+        }
     }
 
 }
