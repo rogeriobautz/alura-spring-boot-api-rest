@@ -9,7 +9,6 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,20 +43,16 @@ public class ConsultaController {
     @CacheEvict(value = "consultas", key = "'listar-consultas'")
     public ResponseEntity<?> agendar(@RequestBody @Valid DadosAgendamentoConsulta dados,
             UriComponentsBuilder uriBuilder) {
-        try {
-            var consulta = consultaService.agendar(dados);
-            URI uri = uriBuilder.path("/consultas/{id}").buildAndExpand(consulta.getId()).toUri();
-            return ResponseEntity.created(uri).body(new DadosDetalhamentoConsulta(consulta));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(e.getMessage());
-        }
+        var consulta = consultaService.agendar(dados);
+        URI uri = uriBuilder.path("/consultas/{id}").buildAndExpand(consulta.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoConsulta(consulta));
     }
 
     @GetMapping
     @Transactional
     @Cacheable(value = "consultas", key = "'listar-consultas'")
     public ResponseEntity<Page<DadosDetalhamentoConsulta>> listar(
-            @PageableDefault(size = 10, sort = { "data" }) Pageable paginacao) {
+            @PageableDefault(size = 10, sort = { "dataHora" }) Pageable paginacao) {
         Page<DadosDetalhamentoConsulta> page = consultaRepository.findAllByMotivoCancelamentoNull(paginacao)
                 .map(DadosDetalhamentoConsulta::new);
         return ResponseEntity.ok(page);

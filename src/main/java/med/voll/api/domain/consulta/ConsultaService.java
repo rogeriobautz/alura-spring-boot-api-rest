@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import med.voll.api.domain.medico.MedicoService;
 import med.voll.api.domain.paciente.PacienteService;
+import med.voll.api.domain.usuario.AutenticacaoService;
 
 @Service
 public class ConsultaService {
@@ -20,6 +21,9 @@ public class ConsultaService {
 
     @Autowired
     private PacienteService pacienteService;
+
+    @Autowired
+    private AutenticacaoService autenticacaoService;
 
     public Consulta agendar(DadosAgendamentoConsulta dados) {
 
@@ -40,6 +44,13 @@ public class ConsultaService {
         }
 
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
+
+        if (!autenticacaoService.usuarioLogadoEhAdmin()) {
+            if (consulta.getDataHora().minusHours(24).isBefore(LocalDateTime.now())) {
+                throw new IllegalArgumentException("Só é possível cancelar consultas com 24 horas de antecedência");
+            }
+        }
+
         consulta.cancelar(dados.motivo());
     }
 
