@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.medico.DadosAtualizacaoMedico;
@@ -29,6 +31,7 @@ import med.voll.api.domain.medico.MedicoRepository;
 
 @RestController
 @RequestMapping("/medicos")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
     @Autowired
@@ -48,7 +51,7 @@ public class MedicoController {
     @Transactional
     @Cacheable(value = "medicos", key = "'listar-medicos'")
     public ResponseEntity<Page<DadosListagemMedico>> listar(
-            @PageableDefault(size = 10, sort = { "nome", "especialidade" }) Pageable paginacao) {
+            @Nullable @PageableDefault(size = 10, sort = { "nome", "especialidade" }) Pageable paginacao) {
         var page = medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
         return ResponseEntity.ok(page);
     }

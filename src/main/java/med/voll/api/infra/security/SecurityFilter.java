@@ -34,6 +34,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     
         String authHeader = request.getHeader("Authorization");
 
+        System.out.println("getRequestURI: " + request.getRequestURI());
         if(authHeader == null || !authHeader.startsWith("Bearer ")) {
             throw new RuntimeException("Authorization header is missing or invalid: " + authHeader);
         }

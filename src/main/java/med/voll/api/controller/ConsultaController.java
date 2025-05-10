@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.consulta.Consulta;
@@ -30,6 +32,7 @@ import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
 
 @RestController
 @RequestMapping("consultas")
+@SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 
     @Autowired
@@ -52,7 +55,7 @@ public class ConsultaController {
     @Transactional
     @Cacheable(value = "consultas", key = "'listar-consultas'")
     public ResponseEntity<Page<DadosDetalhamentoConsulta>> listar(
-            @PageableDefault(size = 10, sort = { "dataHora" }) Pageable paginacao) {
+            @Nullable @PageableDefault(size = 10, sort = { "dataHora" }) Pageable paginacao) {
         Page<DadosDetalhamentoConsulta> page = consultaRepository.findAllByMotivoCancelamentoNull(paginacao)
                 .map(DadosDetalhamentoConsulta::new);
         return ResponseEntity.ok(page);

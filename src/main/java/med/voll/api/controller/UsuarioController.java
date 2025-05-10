@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.DadosCadastroUsuario;
@@ -27,6 +29,7 @@ import med.voll.api.domain.usuario.UsuarioRepository;
 
 @RestController
 @RequestMapping("/usuarios")
+@SecurityRequirement(name = "bearer-key")
 public class UsuarioController {    
     
     @Autowired
@@ -40,7 +43,7 @@ public class UsuarioController {
     @Transactional
     @Cacheable(value = "usuarios", key = "'listar-usuarios'")
     public ResponseEntity<Page<DadosUsuarioCadastrado>> listar(
-            @PageableDefault(size = 10, sort = { "autorizacao"}) Pageable paginacao) {
+            @Nullable @PageableDefault(size = 10, sort = { "autorizacao"}) Pageable paginacao) {
 
         var page = usuarioRepository.findAllByAtivoTrue(paginacao).map(DadosUsuarioCadastrado::new);
         return ResponseEntity.ok(page);

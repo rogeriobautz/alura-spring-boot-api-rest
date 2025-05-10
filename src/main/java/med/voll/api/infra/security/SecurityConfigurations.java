@@ -33,9 +33,9 @@ public class SecurityConfigurations {
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers(
                         AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/token"),
-                        AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/v3/api-docs/**"),
-                        AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/swagger-ui/**"),
-                        AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/favicon.ico"))
+                        AntPathRequestMatcher.antMatcher("/v3/api-docs/**"),
+                        AntPathRequestMatcher.antMatcher("/swagger-ui/**"),
+                        AntPathRequestMatcher.antMatcher("/favicon.ico"))
                     .permitAll()
                     .requestMatchers(AntPathRequestMatcher.antMatcher("/usuarios/**"))
                     .hasRole(EnumPapelAutorizacao.ADMIN.name())
