@@ -45,10 +45,14 @@ public class ConsultaController {
     @Transactional
     @CacheEvict(value = "consultas", key = "'listar-consultas'")
     public ResponseEntity<?> agendar(@RequestBody @Valid DadosAgendamentoConsulta dados,
-            UriComponentsBuilder uriBuilder) {
-        var consulta = consultaService.agendar(dados);
-        URI uri = uriBuilder.path("/consultas/{id}").buildAndExpand(consulta.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DadosDetalhamentoConsulta(consulta));
+            UriComponentsBuilder uriBuilder) {        
+
+        System.out.println("DadosAgendamentoConsulta: " + dados);
+        var dadosDetalhamentoConsulta = consultaService.agendar(dados);
+        System.out.println("DadosDetalhamentoConsulta: " + dadosDetalhamentoConsulta);
+
+        URI uri = uriBuilder.path("/consultas/{id}").buildAndExpand(dadosDetalhamentoConsulta.id()).toUri();
+        return ResponseEntity.created(uri).body(dadosDetalhamentoConsulta);
     }
 
     @GetMapping

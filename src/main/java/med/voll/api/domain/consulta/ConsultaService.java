@@ -25,7 +25,7 @@ public class ConsultaService {
     @Autowired
     private AutenticacaoService autenticacaoService;
 
-    public Consulta agendar(DadosAgendamentoConsulta dados) {
+    public DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados) {
 
         validarDataConsulta(dados.dataHora());
 
@@ -35,7 +35,9 @@ public class ConsultaService {
 
         var consulta = new Consulta(null, medico, paciente, dados.dataHora(), null);
 
-        return consultaRepository.save(consulta);
+        consulta =  consultaRepository.save(consulta);
+        
+        return new DadosDetalhamentoConsulta(consulta);
     }
 
     public void cancelar(DadosCancelamentoConsulta dados) {
